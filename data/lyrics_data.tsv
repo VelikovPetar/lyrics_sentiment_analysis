@@ -1,0 +1,178 @@
+Song 	Artist	Code	Avg_Valence	Avg_Arousal	SD_Valence	SD_Arousal
+Moon Song	Norah Jones	L001	1,7	-2,9	0,8	0,5
+Mother	John Lennon	L002	-2,3	-1,7	0,8	0,5
+Never too Much	Luther Vandross	L004	2,7	2,6	1	0,7
+New York, New York	Frank Sinatra	L005	2,2	1,7	0,4	0,5
+Nightmare	Avenged Sevenfold	L006	-3,3	2,5	0,5	0,5
+Nothing Compares 2 U	Sinead O'Connor	L007	-3,2	-2,8	0,4	0,8
+Ode to my Family	Cranberries	L008	-1,5	-2	1	0,6
+On An Ocean	Lisa Gerrard	L009	1,5	-2,7	0,5	0,5
+Paint the Sky with Stars	Enya	L010	1,5	-1,7	0,8	0,5
+Penny Lane	Beatles	L011	1	-1,1	0,6	0,8
+Love is in the air	John Paul Young	L012	2,7	1,8	0,5	0,8
+Quiet	Rachael Yamagata	L013	-1,9	-2	0,5	0,6
+Quiet Nights	Diana Krall	L014	2,8	-1,9	0,9	0,9
+Rainy Day Lament	Joe Purdy	L015	-1,3	-1,5	0,5	0,5
+Sacrifice	Sinead O'Connor	L016	-1,8	-1,8	0,4	0,8
+Serial Killer	Vio-Lence	L017	-3,3	3,3	0,5	0,4
+Single Ladies	Beyonce	L018	0,7	2,8	0,5	0,4
+Song for a Blue Guitar	Red House Painters	L020	-2	-2	0	0
+Spill Your Blood	Mr. Hyde	L021	-4	3,2	0	0,4
+Staying Alive	Bee Gees	L022	2,8	2,5	1	0,8
+Sunrise	Norah Jones	L024	1,7	-1,2	0,8	0,8
+Sweet Harmony	The Beloved	L025	1,5	-1,4	0,5	1,1
+Take my Scars	Machine Head	L026	-2,2	1,6	0,4	0,8
+Thank you Stars	Katie Melua	L027	2,3	-2,2	0,4	0,8
+Drive	Cars	L028	-1	-1	0	0
+The Bleeding	Five Finger Death Punch	L030	-3	2,8	0,6	0,8
+The Boy from Ipanema	Diana Krall	L031	1,2	-1,9	1	0,5
+The Enemy Inside	Dream Theater	L032	-2,4	0,9	0,5	0,7
+Angel	Sarah McLachlan	L033	-1,3	-2,2	0,5	0,8
+Another Lonely Day	Ben Harper	L034	-1,8	-1,8	0,4	0,4
+Those Sweet Words	Norah Jones	L035	2,3	-1,5	0,8	0,5
+Twist and Shout	Beatles	L036	2,7	3,2	0,5	0,4
+Two Minutes to Midnight	Iron Maiden	L037	-3	3,2	0,6	0,4
+Uptown Girl	Billy Joel	L038	2,7	2,1	0,8	0,7
+War	Bruce Springsteen	L040	-2,5	2,5	0,5	0,5
+War Pigs	Black Sabbath	L041	-3,4	2,8	0,7	0,8
+We are the Champions	Queen	L042	3,2	2,8	0,8	0,6
+What a Feeling	Irene Cara	L043	3,2	2,9	0,4	0,2
+When you came into my life	Scorpions	L044	3,8	3,7	0,4	0,5
+Winter Wonderland	Louis Armstrong	L045	2,5	1,8	0,5	0,8
+Wish you were here	Pink Floyd	L046	-1,7	-2,3	0,5	0,4
+Yesterday	Beatles	L047	-1,9	-1,7	0,2	0,5
+You Don't Bring me Flowers	Barbra Streisand	L048	-2	-1	0,6	0
+You Should Be Dead	50 Cent	L049	-3,2	3,5	0,4	0,5
+You're the First, the Last, My Everything	Barry White	L050	3,8	2,8	0,4	0,8
+What a Wonderful World	Louis Armstrong	L051	3,3	-1,1	0,5	1,1
+Country Comfort	Rod Stewart	L052	1,2	-1,6	0,4	0,5
+Lately	Stevie Wonder	L053	-2,4	-1,7	0,6	0,8
+I'm so lonesome I could cry	Johnny Cash	L054	-2,9	-2,1	0,4	0,7
+U Got the Look	Prince	L055	1,3	2,3	0,5	0,5
+Why do you want him	Green Day	L058	-1,9	0,9	0,7	1,1
+Our Love	Natalie Cole	L059	3,7	2,7	0,5	0,8
+Animal	Pearl Jam	L060	-2,9	2,1	0,7	0,9
+PS I Love You	Beatles	L061	3	1,7	0,8	0,8
+London Calling	The Clash	L063	-1,7	1,7	0,5	1
+Feels_Just_Like_It_Should	Jamiroquai	L064	1,9	2,6	0,9	0,5
+Gimme Shelter	Rolling Stones	L065	-2,5	2,6	0,5	0,5
+Blue eyes crying in the rain	Willie Nelson	L066	-1,9	-2,1	0,7	0,9
+Just the Way You are	Billy Joel	L067	1,8	-1	0,6	0,6
+Solitude	Tonny Bennett	L068	-2,5	-2,9	0,6	0,9
+California Girls	Beach Boys	L069	2,1	2,3	0,9	0,8
+Sunday Bloody Sunday	U2	L070	-2,9	3	0,2	0
+That's what friends are for	Dionne and Friends	L071	2,7	-1	0,5	0,6
+Miss Jamaica	Jimmy Cliff	L072	2,8	2	0,8	0,6
+Last Resort	Papa Roach	L073	-3,7	3,2	0,5	0,8
+Paradise	Sade	L074	3,2	1,8	0,8	0,8
+Bring Your Whole Crew	DMX	L075	-3,8	3,8	0,4	0,4
+She hates me	Puddle of Mudd	L076	-2,8	2	0,4	0
+I Fucking Hate You	Godsmack	L078	-3,5	3,2	0,5	0,8
+Tears in Heaven	Eric Clapton	L079	-2	-1,7	0,9	0,5
+White Christmas	John Denver	L080	2	-1,2	0	0,4
+May it Be	Enya	L082	1,6	-2,1	0,5	0,8
+Orinoco Flow	Enya	L083	1,8	-1,7	0,8	0,5
+Natural Disaster	Anathema	L084	-2,3	-2,7	0,4	0,8
+Disappear	Dream Theater	L085	-3	-2,3	0	0,4
+And The Singer sings his song	Neil Diamond	L087	1,5	-1,8	0,5	0,8
+The Eternal	Joy Division	L088	-1,9	-1,5	0,8	1
+Dancing Queen	ABBA	L089	2,7	3	0,5	0
+Yellow Submarine	Beatles	L090	2	2	0	0,6
+Imagine	John Lennon	L091	3,4	-2,3	0,8	0,5
+Do you wanna dance	Beach Boys	L092	2,9	2,9	1,1	0,9
+Beautiful Day	Mary J. Blige	L093	2,5	2,3	0,6	1,1
+Hurt	Johnny Cash	L095	-2,8	-2	0,4	0,6
+Lonely Boy	Paul Anka	L096	-2,3	-1,8	1	0,9
+La Isla Bonita	Madonna	L097	2,5	2	0,9	1
+Everybody Hurts	REM	L098	-1,6	-2,7	0,8	0,8
+Highway to Hell	ACDC	L099	-1,9	3	1	1
+Whenever, wherever	Shakira	L100	2,1	2,6	0,7	0,5
+Can't Stand You	Slayer	L101	-3,1	3,5	0,9	0,5
+Hell's Bells	ACDC	L102	-3	3,3	0,6	0,5
+Strawberry Swing	Coldplay	L103	2,5	-1,2	0,5	0,4
+Angie	Rolling Stones	L104	-1,5	-1,7	0,5	0,8
+Born in the USA	Bruce Springsteen	L105	-2	2,2	0,9	0,8
+Annie's Song	John Denver	L107	3,3	1,5	0,8	0,8
+Over the Rainbow	Frank Sinatra	L108	2,5	-2,7	0,5	0,5
+One Last Goodbye	Anathema	L109	-3,2	-2,2	0,4	1,2
+Wise up	Aimee Mann	L110	-2,8	-2,2	0,4	1,2
+Mad World	Gary Jules	L111	-2,5	-1,2	0,5	0,4
+Aces High	Iron Maiden	L112	-2,2	2,7	0,8	0,5
+All Night Long	Lionel Ritchie	L114	3,2	3,5	0,4	0,5
+Already Dead	Beck	L115	-2,2	-1,8	0,8	1
+The Journey of the Angels	Enya	L116	1,8	-2,8	0,4	0,8
+The Lady Of Shalott	Loreena Mckennitt	L117	0,7	-1,3	0,5	0,8
+Ashes	Five Finger Death Punch	L118	-3,7	3,7	0,5	0,5
+Brick	Ben Folds Five	L121	-1,6	-1,6	0,7	0,8
+Bridge Over Troubled Water	Simon and Garfunkel	L122	1,3	-1,7	0,5	0,8
+Broken Strings	James Morrison	L123	-1,9	-2,1	0,7	0,8
+Bullet with your name	Scars of life	L124	-3,3	2,3	0,5	0,5
+Burning Heart	Survivor	L125	-1,6	2,2	0,5	0,6
+Calypso	John Denver	L126	1,9	-1,7	0,7	0,5
+Celebration	Kool and the Gang	L127	3,3	3,6	0,5	0,5
+China Roses	Enya	L128	2,1	-3	0,9	1,2
+Congratulations, I hate you	Alesana	L130	-3	2,4	0,8	0,8
+Creep	Radiohead	L131	-2,6	-2,1	0,5	0,8
+Cryin' Like a Bitch	Godsmack	L132	-1,9	2,1	0,7	0,7
+Crying	Don McLean	L133	-2,4	-1,9	0,5	0,7
+Dance with my Father	Luther Vandross	L134	-2,9	-2	0,4	0,8
+Dying in the Sun	Cranberries	L135	-2,1	-1,4	0,9	0,5
+Everybody Dance Now	CC Music Factory	L136	2,9	3,1	0,7	0,9
+Father Time	Lloyd Banks	L137	-2,7	2,6	0,5	0,5
+Fly me to the Moon	Diana Krall	L138	3,4	-1,3	1	1,1
+Fuck the World	Tupac Shakur	L140	-3,1	3,5	0,8	0,5
+Fuck you	Headstones	L141	-2,5	1,7	0,8	0,8
+Fun Fun Fun	Beach Boys	L142	2,2	2,6	0,8	0,9
+Good Times	Chic	L144	2,8	2,8	0,4	0,4
+Happy	Pharrel Williams	L145	4	3,8	0	0,4
+Hello	Evanescence	L146	-1,8	-1,7	1,2	0,5
+Home	Michael Buble	L147	-2,2	-1,8	0,8	0,4
+How could Anyone	Shaina Noll	L148	2	-2,2	0,9	0,8
+Hurt	Christina Aguilera	L149	-1,8	-2,6	0,8	0,7
+I Feel Good	James Brown	L150	3,3	2,7	0,8	0,8
+I Feel Love	Donna Summer	L151	3,5	2,1	0,5	0,7
+I Wanna Dance with Somebody	Whitney Houston	L152	2,2	3,2	1	0,4
+Idiot	Lisa Marie Presley	L153	-2,8	2,7	1	0,8
+It's Raining Men	Geri Halliwell	L154	3,2	3	0,4	0
+Kiss	Prince	L155	1,7	1,5	0,5	0,5
+Knife	Rockwell	L156	-2,3	-2,2	0,5	0,4
+Let's Dance	David Bowie	L157	3,2	3,3	0,8	0,4
+Love is where you are	Diana Krall	L159	2,5	-1,3	0,5	0,5
+Lovely Linda	Paul McCartney	L160	1,8	2,5	0,4	0,8
+Wonderful Christmas Time	Paul McCartney	L161	3,2	-2	0,8	0
+Wonderful	Aretha Franklin	L162	3,2	2,2	0,4	1
+With or Without you	U2	L163	-2,3	-1,7	0,5	0,5
+We are the World	Michael Jackson	L164	3	-1,7	0	0,5
+Wake me up before you go go	Glee	L166	2	3	0	0
+Twistin' the Night Away	Sam Cooke	L167	2,7	2,5	0,5	0,5
+The Voice of Enigma	Enigma	L168	1,7	-4	0,8	0
+The Friendship Song	Carbon Leaf	L169	1,7	-2,8	0,5	0,4
+Suicidal dream	Silverchair	L170	-3,7	-3,5	0,5	0,5
+Say Something	A Great Big World	L171	-2	-2	0	0
+Rockstar	Nickleback	L172	-1,5	1,7	0,5	0,5
+Renegade	Eminem	L174	-2,7	2,8	0,5	0,4
+Red red wine	Neil Diamond	L175	-2,7	-2,7	0,5	0,5
+Prison Song	System of a Down	L176	-2,2	2,8	0,4	0,4
+Platypus	Green Day	L177	-4	3,8	0	0,4
+Peace Train	Cat Stevens	L178	2	-2,2	0	0,4
+One People One Land	Monica Brown	L179	2,2	-1,7	0,4	0,5
+Midnight Bottle	Colbie Caillat	L181	-2,3	-2,3	0,8	0,8
+Lose Yourself	Eminem	L182	-2,4	2,6	0,5	0,5
+Killing in the Name	Rage Against The Machine	L183	-3,1	2,9	0,9	0,7
+It's in the Rain	Enya	L184	-1,3	-1,7	1,1	0,5
+I never told you	Colbie Caillat	L185	-2,4	-1,6	0,5	0,5
+I am the Earth	Glyn Lehmann	L186	2,4	-2,6	0,5	0,8
+He's The Greatest Dancer	Sister Sledge	L187	2,6	2,7	0,5	0,5
+Gloomy Sunday	Billie Holliday	L188	-2,3	-2,6	0,8	0,5
+Gift of a friend	Demi Lovato	L189	3	-1,9	0	0,4
+Friends are Quiet Angels	Gloria Sklerov	L190	3,1	-2,3	0,4	0,5
+For the Love of a Daughter	Demi Lovato	L191	-2,3	-2,6	0,5	0,5
+A Family is a Family	Skip West	L192	3,1	-3,1	1,1	0,4
+Eye of the Tiger	Survivor	L193	-1,6	2,6	0,5	0,5
+Dead Bodies Everywhere	Korn	L194	-3,4	3,4	0,5	0,5
+When I was your man	Bruno Mars	L195	-2,4	-2,7	0,5	0,5
+Dancing In The Street	Martha Reeves And The Vandellas	L196	2,9	3,6	0,4	0,5
+Christmas Tree	Lady Ga Ga	L197	2,6	-1,6	0,5	0,8
+But Beautiful	Billie Holiday	L198	2,7	-2,3	0,5	0,5
+Amnesia	5 Seconds of Summer	L199	-2,3	-2,6	0,5	0,5
+Adam's Song	Blink 182	L200	-2,9	-2,9	0,4	0,4
