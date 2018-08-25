@@ -2,7 +2,7 @@ import os
 
 import pandas
 
-import lyrics_api
+from data_collection import lyrics_api
 
 
 def save_lyrics(lyrics, outfile):
