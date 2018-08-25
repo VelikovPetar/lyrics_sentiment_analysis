@@ -3,7 +3,7 @@
 3. Manually annotated sentences from [http://mir.dei.uc.pt/downloads.html]
 4. Words annotated with valence/arousal [ED.txt]
 5. Sentence Emotion Recognition Model - SERM
-- use the already completed word set?
+- use the already completed word set [Y]
 - create a new word set using:
     - DAL [http://compling.org/cgi-bin/DAL_sentence_xml.cgi?sentence=love] (valence, activation)
     - ANEW [Ratings_Warriner_et_al.csv] -> (V.Mean.Sum, A.Mean.Sum) -> normalize to fit [1, 3] range as DAL values
@@ -11,3 +11,12 @@
 We will use the ANEW values: VALENCE, AROUSAL.
 The lyrisc_data.csv (the data set is represented in the ANEW value).
 The emotion dictionary is represented with the DAL scale - PLEASANTNESS, ACTIVATION - CONVERT TO ANEW SCALE
+
+========================================================================================================================
+How to proceed:
+- Make a simple classifier
+--Get all words from each song
+--Get the valence/arousal for each song using the values from the emotion_dictionary_anew.csv
+--For each song calculate the average valence/arousal
+--Classify the song according to the avg. valence/arousal
+========================================================================================================================
