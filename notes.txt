@@ -1,22 +1,34 @@
 1. Annotated data from lyrics_data.csv [http://mir.dei.uc.pt/downloads.html]
 2. Download the lyrics of each annotated song by using [https://api.lyrics.ovh/v1/artist/title] api
 3. Manually annotated sentences from [http://mir.dei.uc.pt/downloads.html]
-4. Words annotated with valence/arousal [ED.txt]
+4. Words annotated with valence/arousal [emotion_dictionary.txt]
 5. Sentence Emotion Recognition Model - SERM
-- use the already completed word set [Y]
+- use the already completed word set [Y] (TODO: Explain the process of collecting the words)
 - create a new word set using:
     - DAL [http://compling.org/cgi-bin/DAL_sentence_xml.cgi?sentence=love] (valence, activation)
     - ANEW [Ratings_Warriner_et_al.csv] -> (V.Mean.Sum, A.Mean.Sum) -> normalize to fit [1, 3] range as DAL values
 
 We will use the ANEW values: VALENCE, AROUSAL.
 The lyrisc_data.csv (the data set is represented in the ANEW value).
-The emotion dictionary is represented with the DAL scale - PLEASANTNESS, ACTIVATION - CONVERT TO ANEW SCALE
+The emotion dictionary is represented with the DAL scale - PLEASANTNESS, ACTIVATION - CONVERT TO ANEW SCALE [Y]
+    - Using the data_preprocessing/dal_to_anew.py script
+    - Output: emotion_dictionary_anew.csv
 
 ========================================================================================================================
-How to proceed:
-- Make a simple classifier
---Get all words from each song
---Get the valence/arousal for each song using the values from the emotion_dictionary_anew.csv
---For each song calculate the average valence/arousal
---Classify the song according to the avg. valence/arousal
+KEYWORDS-BASED APPROACH
+
+1. Simple naive average valence/arousal classifier
+    --Get all words from each song (only remove punctuation)
+    --Get the valence/arousal of each word using the values from the emotion_dictionary_anew.csv
+    --For each song calculate the average valence/arousal
+    --Classify the song according to the avg. valence/arousal
+    --Results:
+        Matches: 91
+        Total: 177
+        Accuracy: 51.412%
+        todo: maybe confusion matrix?
+
+2.
+HOW TO PROCEED:
+READ THE PAPER ABOUT KEYWORDS-BASED APPROACHES AND TRY SOME OF THEM.
 ========================================================================================================================
