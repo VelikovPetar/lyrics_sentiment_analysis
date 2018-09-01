@@ -28,7 +28,26 @@ KEYWORDS-BASED APPROACH
         Accuracy: 51.412%
         todo: maybe confusion matrix?
 
-2.
+2. Simple naive dominant emotion word classifier
+    --Get all words from each song (only remove punctuation)
+    --Get the valence/arousal of each word using the values from the emotion_dictionary_anew.csv
+    --For each find the most dominant emotion word (the furthest from (0, 0))
+    --Classify the song according to the most dominant emotion word
+    --Results:
+        Matches: 66
+        Total: 177
+        Accuracy:	37.288%
+
+3. Simple naive dominant emotion word per verse (todo possibly ignore, just random testing)
+    --Get all verses from each song (remove blank lines)
+    --Get the most dominant emotion word from each verse
+    --Classify the song according to the most common emotion per verse
+    --Results:
+        Matches: 89
+        Total: 177
+        Accuracy:	50.282%
+
+
 HOW TO PROCEED:
 READ THE PAPER ABOUT KEYWORDS-BASED APPROACHES AND TRY SOME OF THEM.
 ========================================================================================================================

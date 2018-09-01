@@ -3,6 +3,7 @@ A collection of methods that are often used in other scripts.
 """
 import os
 import pandas
+import math
 
 
 def get_anew_emotion_dictionary():
@@ -73,6 +74,20 @@ def get_quadrant_for_valence_arousal(valence, arousal):
             quadrant = 3
 
     return quadrant
+
+
+def euclidean_distance(point1, point2):
+    """
+    Calculates euclidean distance between 2 points.
+    :param point1: the first point
+    :param point2: the second point
+    :return: the euclidean distance
+    """
+    x1 = point1[0]
+    y1 = point1[1]
+    x2 = point2[0]
+    y2 = point2[1]
+    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
 
 if __name__ == '__main__':
