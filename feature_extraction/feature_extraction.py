@@ -14,7 +14,7 @@ def get_all_words(filename):
     if not os.path.exists(filename):
         raise Exception('File %s not found.' % filename)
 
-    remove_punctuation_map = dict.fromkeys(map(ord, string.punctuation))
+    remove_punctuation_map = dict.fromkeys(map(ord, string.punctuation.replace("'", "")))
     words = []
     with open(filename, mode='r') as file:
         for line in file:
@@ -37,6 +37,35 @@ def get_all_lines(filename):
             if len(line.strip()) > 0:
                 lines.append(line.replace('\n', ''))
     return lines
+
+
+def remove_tailing_s(word_list):
+    """
+    Removes each 's from words. ex. "my mother's house" becomes "my mother house".
+    :param word_list: list of words
+    :return: same list of words with removed tailing 's
+    """
+    words = []
+    for word in word_list:
+        if word.endswith("'s"):
+            word = word[:-2]
+        if len(word) > 0:
+            words.append(word)
+    return words
+
+
+def correct_shortened_gerund(pos_tagged_word_list):
+    """
+    Corrects the usage of a shortened gerund: ex. 'sittin' -> 'sitting', 'sippin' -> 'sipping'
+    :param pos_tagged_word_list: list of words
+    :return: same list of words with corrected gerunds
+    """
+    words = []
+    for word in pos_tagged_word_list:
+        if word.endswith("'"):
+            word = word[:-1] + 'g'
+        words.append(word)
+    return words
 
 
 def pos_tag(word_list):
