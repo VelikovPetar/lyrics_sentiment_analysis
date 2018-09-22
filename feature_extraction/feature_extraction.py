@@ -2,11 +2,16 @@ import os
 import string
 
 import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+
+STEMMER = PorterStemmer()
 
 
 def get_all_words(filename):
     """
-    Extracts all words from a song lyrics. Takes into consideration each word and removes the punctuation.
+    Extracts all words from a song lyrics. Takes into consideration each word and removes the punctuation and
+    non-alphabetic words.
 
     :param filename: the filename (.txt) containing the song lyrics
     :return: list containing each word of the song
@@ -20,6 +25,20 @@ def get_all_words(filename):
         for line in file:
             words = words + line.translate(remove_punctuation_map).lower().split()
     return words
+
+
+def remove_stopwords(words_list):
+    """
+    Removes all stopwords from a list
+    :param words_list: the list of words
+    :return: same list without the stopwords
+    """
+    stopwords_eng = stopwords.words('english')
+    clean_words_list = []
+    for word in words_list:
+        if word not in stopwords_eng:
+            clean_words_list.append(word)
+    return clean_words_list
 
 
 def get_all_lines(filename):
@@ -136,6 +155,24 @@ def get_svana_words(pos_tagged_word_list):
         if tag in allowed_svana_tags and word not in auxiliary_verbs:
             svana_words.append((word, tag))
     return svana_words
+
+
+def remove_pos_tags(pos_tagged_word_list):
+    """
+    Removes POS tags from a list
+    :param pos_tagged_word_list: a list of POS tagged words
+    :return: the same list without pos tags
+    """
+    return [pos[0] for pos in pos_tagged_word_list]
+
+
+def stem_words(words_list):
+    """
+    Stems each word in a list
+    :param words_list: the list of words
+    :return: the list with stemmed words
+    """
+    return [STEMMER.stem(word) for word in words_list]
 
 
 if __name__ == '__main__':
