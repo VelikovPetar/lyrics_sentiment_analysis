@@ -16,23 +16,6 @@ CORPUS = []
 VECTORIZER = CountVectorizer(max_features=MAX_FEATURES)
 
 
-def fill_corpus():
-    """
-    Creates the full corpus of words.
-    """
-    global CORPUS
-    data_frame = pandas.read_csv(TRAIN_FILENAME, header=None)
-    for _, row in data_frame.iterrows():
-        text_id = row[0]
-        CORPUS = CORPUS + get_processed_words(text_id)
-
-
-def create_bag_of_words():
-    X = VECTORIZER.fit_transform(CORPUS)
-    print(X.toarray())
-    print(VECTORIZER.get_feature_names())
-
-
 def text_id_to_filename(text_id):
     """
     Creates the full filename for the text_id
@@ -60,10 +43,6 @@ def get_processed_words(text_id):
     words = fe.remove_pos_tags(words)
     words = fe.stem_words(words)
     return words
-
-
-def get_bow_representation(words):
-    return VECTORIZER.transform(words)
 
 
 def train_test_classifier(clf_name, classifier, train_x, train_y, test_x, test_y):
@@ -108,6 +87,3 @@ if __name__ == '__main__':
     # todo test other classifiers
     classifier = GaussianNB()
     train_test_classifier('GaussianNB', classifier, train_x, train_y, test_x, test_y)
-
-
-

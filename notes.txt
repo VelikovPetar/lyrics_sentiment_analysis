@@ -60,7 +60,7 @@ Files:
 Method:
     - Calculate the labels for the raw lyrics by their valence/arousal
     - Create separate file containing each sentence from the manually annotated sentences
-    - Create unique ids for these files (so they can identified similar to the 'Code' from the raw lyrics data set)
+    - Create unique ids for these files (so they can be identified similar to the 'Code' from the raw lyrics data set)
     - Create new labels.csv file from the Dataset-129_Sentences-Classes.txt and Dataset-239_Sentences-Classes.txt with
     all labels identified by the unique id
 
@@ -68,6 +68,20 @@ Method:
         - get all words
         - remove tailing 's: "mother's" -> "mother"
         - correct shortened gerunds: "playin'" -> "playing"
+        - remove stop words
         - remove all non-VANA words (keep only verbs, adjectives, nouns and adverbs)
-        - todo find SVANA words
-        - todo extract features as defined int paper
+        - remove all non-SVNANA words (keep only verbs, adjectives, nouns, adverbs, but don't take into consideration
+          proper nouns and auxiliary verbs)
+        - stem the words
+        - extract features as defined in the paper
+
+Train/Test:
+    Separate the set into two sub-sets: Train(75%) and Test(25%)
+
+5. CLASSIFICATION
+    1. Pre-process the train set as previously explained
+    2. Use CountVectorizer to create Bag of Words for the train data
+    3. Pre-process the test set as previously explained
+    4. Transform the test data using the previously fitted vectorizer
+    5. Use the train/test BoWs to fit a classifier and make predictions
+    # todo test multiple classifiers
