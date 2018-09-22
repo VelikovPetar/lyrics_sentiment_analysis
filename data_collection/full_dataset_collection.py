@@ -1,9 +1,14 @@
 import os
+import random
 
 import pandas
 
 import common_utils
 import feature_extraction.feature_extraction as fe
+
+
+TRAIN_FILENAME = '../data/full/train.csv'
+TEST_FILENAME = '../data/full/test.csv'
 
 
 def create_id(number):
@@ -90,9 +95,31 @@ def get_full_dataset():
     return words_dataset, labels
 
 
+def separate_set_to_train_test(labels, train_ratio):
+    train_set = {}
+    test_set = {}
+    random.seed(0)
+
+    for key in labels.keys():
+        val = random.uniform(0, 1)
+        if val <= train_ratio:
+            train_set[key] = labels[key]
+        else:
+            test_set[key] = labels[key]
+
+    with open(TRAIN_FILENAME, mode='w') as file:
+        for key in train_set.keys():
+            file.write('%s,%s\n' % (key, train_set[key]))
+
+    with open(TEST_FILENAME, mode='w') as file:
+        for key in test_set.keys():
+            file.write('%s,%s\n' % (key, test_set[key]))
+
+
 if __name__ == '__main__':
 
     words_dataset, labels = get_full_dataset()
+    separate_set_to_train_test(labels, 0.75)
 
     # IT'S CORRECT!
     print(len(words_dataset.keys()))
