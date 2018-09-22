@@ -39,7 +39,11 @@ def separate_and_id_annotated_sentences_and_labels():
             ind += 1
 
 
-if __name__ == '__main__':
+def get_full_dataset():
+    """
+    Returns the full data set as dictionaries: ['id':[(word, POS tag)...]] and ['id':label]
+    :return:
+    """
     # Expand the contents files 'Dataset-129_Sentences.txt' and 'Dataset-239_Sentences.txt' to a separate file for each
     # sentence. Each of these files is given an unique id. These files are then stored in the 'data/raw_sentences'
     # directory. Create a single labels.csv file containing info about the labels of the sentences.
@@ -59,7 +63,7 @@ if __name__ == '__main__':
         song_words = fe.get_all_words(raw_lyrics_directory + '/' + file_name)
         song_words = fe.remove_tailing_s(song_words)
         song_words = fe.correct_shortened_gerund(song_words)
-        song_words = fe.get_vana_words(fe.pos_tag(song_words))
+        song_words = fe.get_svana_words(fe.pos_tag(song_words))
         key = file_name.replace('.txt', '')
         words_dataset[key] = song_words
         labels[key] = annotated_lyrics[key]
@@ -67,10 +71,12 @@ if __name__ == '__main__':
     # Retrieve all words from each sentence from the 'data/raw_sentences directory and populate the 'words_dataset'
     # dictionary.
     for file_name in os.listdir(raw_sentences_directory):
+        if not file_name.endswith('.txt'):
+            continue
         words = fe.get_all_words(raw_sentences_directory + '/' + file_name)
         words = fe.remove_tailing_s(words)
         words = fe.correct_shortened_gerund(words)
-        words = fe.get_vana_words(fe.pos_tag(words))
+        words = fe.get_svana_words(fe.pos_tag(words))
         words_dataset[file_name.replace('.txt', '')] = words
 
     # Iterate ove the '/data/raw_sentences/labels.csv' file, and populate the 'labels' dictionary.
@@ -81,9 +87,15 @@ if __name__ == '__main__':
         label = row['label']
         labels[id] = label.replace('Q', '')
 
-    count = 0
-    for key in words_dataset.keys():
-        print(words_dataset[key])
-        count += 1
-        if count == 10:
-            break
+    return words_dataset, labels
+
+
+if __name__ == '__main__':
+
+    words_dataset, labels = get_full_dataset()
+
+    # IT'S CORRECT!
+    print(len(words_dataset.keys()))
+    print(words_dataset['AS368'])
+    print(words_dataset['L001'])
+    print(len(labels.values()))
