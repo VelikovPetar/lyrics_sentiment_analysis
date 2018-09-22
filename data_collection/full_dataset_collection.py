@@ -96,6 +96,11 @@ def get_full_dataset():
 
 
 def separate_set_to_train_test(labels, train_ratio):
+    """
+    Create .csv files with data: (text_id, label) for train and test sets.
+    :param labels: dictionary containing data about each text label
+    :param train_ratio: the ration of the train set
+    """
     train_set = {}
     test_set = {}
     random.seed(0)
