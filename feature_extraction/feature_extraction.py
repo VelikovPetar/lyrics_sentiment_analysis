@@ -10,8 +10,7 @@ STEMMER = PorterStemmer()
 
 def get_all_words(filename):
     """
-    Extracts all words from a song lyrics. Takes into consideration each word and removes the punctuation and
-    non-alphabetic words.
+    Extracts all words from a song lyrics. Takes into consideration each word and removes the punctuation.
 
     :param filename: the filename (.txt) containing the song lyrics
     :return: list containing each word of the song
