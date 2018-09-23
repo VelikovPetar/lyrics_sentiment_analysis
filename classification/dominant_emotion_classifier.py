@@ -1,10 +1,12 @@
 import os
 import string
 
+import pandas
+
 import common_utils
 import feature_extraction.feature_extraction as fe
 
-ANNOTATED_DATASET = common_utils.get_annotated_dataset()
+ANNOTATED_DATASET = {}
 ANEW_EMOTION_DICTIONARY = common_utils.get_anew_emotion_dictionary()
 
 remove_punctuation_map = dict.fromkeys(map(ord, string.punctuation))
@@ -57,13 +59,21 @@ def get_max_with_index(list):
 
 if __name__ == '__main__':
 
-    data_dir = '../data/raw_lyrics'
+    data_dir = '../data/full'
+
+    data_frame = pandas.read_csv('../data/full/dataset.csv', header=None)
+    for _, row in data_frame.iterrows():
+        text_id = row[0]
+        label = row[1]
+        ANNOTATED_DATASET[text_id] = label
 
     # Dominant emotion word for full song
     total = 0
     matches = 0
 
     for song_name in os.listdir(data_dir):
+        if song_name.endswith('.csv'):
+            continue
         filename = data_dir + '/' + song_name
         words = fe.get_all_words(filename)
         dominant_emotion_quadrant = calculate_dominant_emotion_full_song(words)
@@ -81,6 +91,8 @@ if __name__ == '__main__':
     matches = 0
 
     for song_name in os.listdir(data_dir):
+        if song_name.endswith('.csv'):
+            continue
         # print(song_name)
         filename = data_dir + '/' + song_name
         lines = fe.get_all_lines(filename)
