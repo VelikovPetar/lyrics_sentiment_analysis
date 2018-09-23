@@ -12,8 +12,7 @@ from sklearn.svm import SVC
 import common_utils
 import feature_extraction.feature_extraction as fe
 
-TRAIN_FILENAME = '../data/full/train.csv'
-TEST_FILENAME = '../data/full/test.csv'
+
 DATASET_FILENAME = '../data/full/dataset.csv'
 
 DATA_DIRECTORY = '../data/full'
@@ -36,7 +35,6 @@ CLASSIFIERS = {
 }
 
 ANEW_EMOTION_DICTIONARY = common_utils.get_anew_emotion_dictionary()
-EMOTION_DICTIONARY_BY_QUADRANT = common_utils.get_emotion_dictionary_by_quadrant()
 
 
 def text_id_to_filename(text_id):
