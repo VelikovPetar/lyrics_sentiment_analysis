@@ -76,6 +76,21 @@ def get_quadrant_for_valence_arousal(valence, arousal):
     return quadrant
 
 
+def get_emotion_dictionary_by_quadrant():
+    emotion_dictionary = get_anew_emotion_dictionary()
+    by_quadrant = {
+        1: [],
+        2: [],
+        3: [],
+        4: []
+    }
+    for word in emotion_dictionary.keys():
+        val, ar = emotion_dictionary[word]
+        q = get_quadrant_for_valence_arousal(val, ar)
+        by_quadrant[q].append(word)
+    return by_quadrant
+
+
 def euclidean_distance(point1, point2):
     """
     Calculates euclidean distance between 2 points.
@@ -91,5 +106,6 @@ def euclidean_distance(point1, point2):
 
 
 if __name__ == '__main__':
-    print(get_anew_emotion_dictionary()['happy'])
-    print(get_annotated_dataset()['L001'])
+    # print(get_anew_emotion_dictionary()['happy'])
+    # print(get_annotated_dataset()['L001'])
+    print(get_emotion_dictionary_by_quadrant()[3])

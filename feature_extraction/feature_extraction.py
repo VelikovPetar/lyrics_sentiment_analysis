@@ -4,8 +4,14 @@ import string
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+from nltk.stem.lancaster import LancasterStemmer
+from nltk.stem.snowball import SnowballStemmer
 
-STEMMER = PorterStemmer()
+STEMMERS = {
+    "PorterStemmer": PorterStemmer(),
+    "LancasterStemmer": LancasterStemmer(),
+    "SnowballStemmer": SnowballStemmer('english')
+}
 
 
 def get_all_words(filename):
@@ -165,13 +171,16 @@ def remove_pos_tags(pos_tagged_word_list):
     return [pos[0] for pos in pos_tagged_word_list]
 
 
-def stem_words(words_list):
+def stem_words(words_list, stemmer_name=None):
     """
     Stems each word in a list
     :param words_list: the list of words
+    :param stemmer_name: name of the stemmer to use
     :return: the list with stemmed words
     """
-    return [STEMMER.stem(word) for word in words_list]
+    if stemmer_name is None:
+        return words_list
+    return [STEMMERS[stemmer_name].stem(word) for word in words_list]
 
 
 if __name__ == '__main__':

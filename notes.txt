@@ -23,9 +23,9 @@ KEYWORDS-BASED APPROACH
     --For each song calculate the average valence/arousal
     --Classify the song according to the avg. valence/arousal
     --Results:
-        Matches: 91
-        Total: 177
-        Accuracy: 51.412%
+        Matches: 338
+        Total: 545
+        Accuracy:	62.018%
         todo: maybe confusion matrix?
 
 2. Simple naive dominant emotion word classifier
@@ -34,18 +34,18 @@ KEYWORDS-BASED APPROACH
     --For each find the most dominant emotion word (the furthest from (0, 0))
     --Classify the song according to the most dominant emotion word
     --Results:
-        Matches: 66
-        Total: 177
-        Accuracy:	37.288%
+        Matches: 296
+        Total: 545
+        Accuracy:	54.312%
 
 3. Simple naive dominant emotion word per verse (todo possibly ignore, just random testing)
     --Get all verses from each song (remove blank lines)
     --Get the most dominant emotion word from each verse
     --Classify the song according to the most common emotion per verse
     --Results:
-        Matches: 89
-        Total: 177
-        Accuracy:	50.282%
+        Matches: 305
+        Total: 545
+        Accuracy:	55.963%
 
 
 HOW TO PROCEED:
@@ -83,5 +83,171 @@ Train/Test:
     2. Use CountVectorizer to create Bag of Words for the train data
     3. Pre-process the test set as previously explained
     4. Transform the test data using the previously fitted vectorizer
-    5. Use the train/test BoWs to fit a classifier and make predictions
-    # todo test multiple classifiers
+    5. Use the train/test BoWs(2500 features, 1-grams) to fit a classifier and make predictions
+    6. Classifier results
+        i. Without stemming
+            Accuracy[GaussianNB]: 87/148 (0.58784)
+            Accuracy[MultinomialNB]: 108/148 (0.72973)
+            Accuracy[KNN]: 79/148 (0.53378)
+            Accuracy[LogisticRegression]: 104/148 (0.70270)
+            Accuracy[RandomForest]: 101/148 (0.68243)
+            Accuracy[ExtraTrees]: 99/148 (0.66892)
+            Accuracy[AdaBoost]: 63/148 (0.42568)
+            Accuracy[MLP]: 102/148 (0.68919)
+            Accuracy[SVC(linear, C=0.025)]: 88/148 (0.59459)
+        ii) Porter Stemmer
+            Accuracy[GaussianNB]: 87/148 (0.58784)
+            Accuracy[MultinomialNB]: 111/148 (0.75000)
+            Accuracy[KNN]: 78/148 (0.52703)
+            Accuracy[LogisticRegression]: 103/148 (0.69595)
+            Accuracy[RandomForest]: 101/148 (0.68243)
+            Accuracy[ExtraTrees]: 99/148 (0.66892)
+            Accuracy[AdaBoost]: 75/148 (0.50676)
+            Accuracy[MLP]: 109/148 (0.73649)
+            Accuracy[SVC(linear, C=0.025)]: 89/148 (0.60135)
+        iii) Lancaster Stemmer
+            Accuracy[GaussianNB]: 87/148 (0.58784)
+            Accuracy[MultinomialNB]: 110/148 (0.74324)
+            Accuracy[KNN]: 83/148 (0.56081)
+            Accuracy[LogisticRegression]: 101/148 (0.68243)
+            Accuracy[RandomForest]: 104/148 (0.70270)
+            Accuracy[ExtraTrees]: 97/148 (0.65541)
+            Accuracy[AdaBoost]: 73/148 (0.49324)
+            Accuracy[MLP]: 107/148 (0.72297)
+            Accuracy[SVC(linear, C=0.025)]: 90/148 (0.60811)
+        iv) Snowball Stemmer
+            Accuracy[GaussianNB]: 87/148 (0.58784)
+            Accuracy[MultinomialNB]: 111/148 (0.75000)
+            Accuracy[KNN]: 78/148 (0.52703)
+            Accuracy[LogisticRegression]: 103/148 (0.69595)
+            Accuracy[RandomForest]: 106/148 (0.71622)
+            Accuracy[ExtraTrees]: 106/148 (0.71622)
+            Accuracy[AdaBoost]: 75/148 (0.50676)
+            Accuracy[MLP]: 104/148 (0.70270)
+            Accuracy[SVC(linear, C=0.025)]: 89/148 (0.60135)
+
+     Best results: using PorterStemmer with MultinimialNB and MultiLayerPerceptron with 1-grams(n-grams give worse results)
+
+6. MODEL EVALUATION
+    1. Pre-process the data set as previously explained (Use VANA words, NOT SVANA)
+    2. Use CountVectorizer to create Bag of Words for the data
+    3. Use 10 fold cross validation on the data on each different model and for each different stemming method
+    4. Results
+        i) No stemming
+            (SVANA)
+            GaussianNB:	Accuracy: 0.61739 (+/- 0.169)
+            MultinomialNB:	Accuracy: 0.69273 (+/- 0.191)
+            KNN:	Accuracy: 0.46124 (+/- 0.202)
+            LogisticRegression:	Accuracy: 0.62541 (+/- 0.147)
+            RandomForest:	Accuracy: 0.60670 (+/- 0.194)
+            ExtraTrees:	Accuracy: 0.62536 (+/- 0.155)
+            AdaBoost:	Accuracy: 0.51266 (+/- 0.191)
+            MLP:	Accuracy: 0.64556 (+/- 0.136)
+            SVC(linear, C=0.025):	Accuracy: 0.54055 (+/- 0.200)
+
+            (VANA)
+            GaussianNB:	Accuracy: 0.61190 (+/- 0.171)
+            MultinomialNB:	Accuracy: 0.70577 (+/- 0.155)
+            KNN:	Accuracy: 0.43708 (+/- 0.197)
+            LogisticRegression:	Accuracy: 0.63437 (+/- 0.165)
+            RandomForest:	Accuracy: 0.62115 (+/- 0.166)
+            ExtraTrees:	Accuracy: 0.64733 (+/- 0.166)
+            AdaBoost:	Accuracy: 0.50735 (+/- 0.161)
+            MLP:	Accuracy: 0.65473 (+/- 0.148)
+            SVC(linear, C=0.025):	Accuracy: 0.55981 (+/- 0.167)
+        ii) Porter
+            (SVANA)
+            GaussianNB:	Accuracy: 0.59754 (+/- 0.146)
+            MultinomialNB:	Accuracy: 0.69068 (+/- 0.193)
+            KNN:	Accuracy: 0.49619 (+/- 0.186)
+            LogisticRegression:	Accuracy: 0.65115 (+/- 0.141)
+            RandomForest:	Accuracy: 0.63610 (+/- 0.174)
+            ExtraTrees:	Accuracy: 0.63270 (+/- 0.161)
+            AdaBoost:	Accuracy: 0.51614 (+/- 0.177)
+            MLP:	Accuracy: 0.67107 (+/- 0.163)
+            SVC(linear, C=0.025):	Accuracy: 0.55835 (+/- 0.198)
+
+            (VANA)
+            GaussianNB:	Accuracy: 0.60475 (+/- 0.153)
+            MultinomialNB:	Accuracy: 0.70904 (+/- 0.152)
+            KNN:	Accuracy: 0.47158 (+/- 0.175)
+            LogisticRegression:	Accuracy: 0.62905 (+/- 0.179)
+            RandomForest:	Accuracy: 0.61936 (+/- 0.209)
+            ExtraTrees:	Accuracy: 0.61536 (+/- 0.186)
+            AdaBoost:	Accuracy: 0.50694 (+/- 0.170)
+            MLP:	Accuracy: 0.65641 (+/- 0.186)
+            SVC(linear, C=0.025):	Accuracy: 0.58286 (+/- 0.173)
+        iii) Lancaster
+            (SVANA)
+            GaussianNB:	Accuracy: 0.59916 (+/- 0.130)
+            MultinomialNB:	Accuracy: 0.68499 (+/- 0.187)
+            KNN:	Accuracy: 0.50536 (+/- 0.192)
+            LogisticRegression:	Accuracy: 0.63811 (+/- 0.136)
+            RandomForest:	Accuracy: 0.62384 (+/- 0.141)
+            ExtraTrees:	Accuracy: 0.63797 (+/- 0.206)
+            AdaBoost:	Accuracy: 0.47649 (+/- 0.166)
+            MLP:	Accuracy: 0.65840 (+/- 0.164)
+            SVC(linear, C=0.025):	Accuracy: 0.57132 (+/- 0.170)
+
+            (VANA)
+            GaussianNB:	Accuracy: 0.59006 (+/- 0.133)
+            MultinomialNB:	Accuracy: 0.70540 (+/- 0.161)
+            KNN:	Accuracy: 0.49361 (+/- 0.162)
+            LogisticRegression:	Accuracy: 0.63791 (+/- 0.162)
+            RandomForest:	Accuracy: 0.62867 (+/- 0.169)
+            ExtraTrees:	Accuracy: 0.63372 (+/- 0.193)
+            AdaBoost:	Accuracy: 0.48124 (+/- 0.128)
+            MLP:	Accuracy: 0.67280 (+/- 0.131)
+            SVC(linear, C=0.025):	Accuracy: 0.58452 (+/- 0.186)
+        iv) Snowball
+            (SVANA)
+            GaussianNB:	Accuracy: 0.59754 (+/- 0.146)
+            MultinomialNB:	Accuracy: 0.69068 (+/- 0.193)
+            KNN:	Accuracy: 0.49619 (+/- 0.186)
+            LogisticRegression:	Accuracy: 0.64926 (+/- 0.139)
+            RandomForest:	Accuracy: 0.62299 (+/- 0.220)
+            ExtraTrees:	Accuracy: 0.63455 (+/- 0.163)
+            AdaBoost:	Accuracy: 0.51614 (+/- 0.177)
+            MLP:	Accuracy: 0.65837 (+/- 0.175)
+            SVC(linear, C=0.025):	Accuracy: 0.55835 (+/- 0.198)
+
+            (VANA)
+            GaussianNB:	Accuracy: 0.60293 (+/- 0.148)
+            MultinomialNB:	Accuracy: 0.70726 (+/- 0.151)
+            KNN:	Accuracy: 0.47158 (+/- 0.175)
+            LogisticRegression:	Accuracy: 0.63083 (+/- 0.180)
+            RandomForest:	Accuracy: 0.63091 (+/- 0.179)
+            ExtraTrees:	Accuracy: 0.64163 (+/- 0.163)
+            AdaBoost:	Accuracy: 0.52005 (+/- 0.123)
+            MLP:	Accuracy: 0.66953 (+/- 0.153)
+            SVC(linear, C=0.025):	Accuracy: 0.58118 (+/- 0.168)
+        Best results gives the Multinomial Naive Bayes classifier, with using Porter stemming and using only VANA words.
+        (by small margin over VANA words with Snowball stemming)
+
+7. MODEL EVALUATION BY CLASSIFICATION WITH KEYWORDS BASED FEATURES:
+    Features used:
+    1. Average valence of the words present in the text that are also present in Q1
+    2. Average arousal of the words present in the text that are also present in Q1
+    3. Number of words that are present in the text and in Q1
+    4. Average valence of the words present in the text that are also present in Q2
+    5. Average arousal of the words present in the text that are also present in Q2
+    6. Number of words that are present in the text and in Q2
+    7. Average valence of the words present in the text that are also present in Q3
+    8. Average arousal of the words present in the text that are also present in Q3
+    9. Number of words that are present in the text and in Q3
+    10. Average valence of the words present in the text that are also present in Q4
+    12. Average arousal of the words present in the text that are also present in Q4
+    13. Number of words that are present in the text and in Q4
+
+    Results:
+    GaussianNB:	Accuracy: 0.55320 (+/- 0.155)
+    MultinomialNB:	Accuracy: 0.51645 (+/- 0.133)
+    KNN:	Accuracy: 0.50030 (+/- 0.137)
+    LogisticRegression:	Accuracy: 0.57008 (+/- 0.206)
+    RandomForest:	Accuracy: 0.61527 (+/- 0.151)
+    ExtraTrees:	Accuracy: 0.60657 (+/- 0.134)
+    AdaBoost:	Accuracy: 0.52325 (+/- 0.188)
+    MLP:	Accuracy: 0.60855 (+/- 0.146)
+    SVC(linear, C=0.025):	Accuracy: 0.47789 (+/- 0.105)
+
+    Best results using Random Forest with 100 estimators, and MLP close behind
