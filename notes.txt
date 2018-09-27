@@ -70,7 +70,7 @@ Method:
         - correct shortened gerunds: "playin'" -> "playing"
         - remove stop words
         - remove all non-VANA words (keep only verbs, adjectives, nouns and adverbs)
-        - remove all non-SVNANA words (keep only verbs, adjectives, nouns, adverbs, but don't take into consideration
+        - remove all non-SVANA words (keep only verbs, adjectives, nouns, adverbs, but don't take into consideration
           proper nouns and auxiliary verbs)
         - stem the words
         - extract features as defined in the paper

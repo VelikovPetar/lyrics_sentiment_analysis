@@ -8,10 +8,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
+from sklearn.metrics import confusion_matrix, f1_score
 
 import common_utils
 import feature_extraction.feature_extraction as fe
-
 
 DATASET_FILENAME = '../data/full/dataset.csv'
 
@@ -62,7 +62,7 @@ def get_processed_words(text_id):
     words = fe.get_vana_words(words)
     # Remove unnecessary POS tags
     words = fe.remove_pos_tags(words)
-    words = fe.stem_words(words, 'PorterStemmer')
+    words = fe.stem_words(words, "PorterStemmer")
     return words
 
 
@@ -74,6 +74,7 @@ def train_test_classifier(clf_name, classifier, train_x, train_y, test_x, test_y
         if prediction[i] == test_y[i]:
             accuracy += 1
     print('Accuracy[%s]: %d/%d (%.5f)' % (clf_name, accuracy, len(test_y), float(accuracy) / float(len(test_y))))
+    print(f1_score(test_y, prediction, labels=[1, 2, 3, 4], average='micro'))
 
 
 def predict_label_probabilities(classifier, test_instance):
@@ -82,7 +83,7 @@ def predict_label_probabilities(classifier, test_instance):
 
 
 def evaluate_classifier_kfold(clf_name, classifier, X, y, k):
-    scores = cross_val_score(classifier, X, y, cv=k)
+    scores = cross_val_score(classifier, X, y, cv=k, verbose=1)
     print(clf_name + ':', end='\t')
     print("Accuracy: %0.5f (+/- %0.3f)" % (scores.mean(), scores.std() * 2))
     # prediction = cross_val_predict(classifier, X, y, cv=k)
@@ -114,11 +115,34 @@ def get_avg_valence_arousal_for_quadrant(words, quadrant):
     return valence_avg, arousal_avg, included_words
 
 
+def get_avg_valence_arousal_for_text(words):
+    """
+    Calculates the average valence and arousal of words in a list using the values defined in
+    emotion_dictionary_anew.csv.
+    Ignores the words that are not in the ANEW dictionary.
+    :param words: the input list of words
+    :return: tuple containing the average valence and the average arousal of the words in the list, and a tuple
+    containing the number of included words and the number of total words
+    """
+    included_words = 0
+    valence_total = 0
+    arousal_total = 0
+    for word in words:
+        if word in ANEW_EMOTION_DICTIONARY.keys():
+            valence, arousal = ANEW_EMOTION_DICTIONARY[word]
+            valence_total += valence
+            arousal_total += arousal
+            included_words += 1
+    valence_avg = 0 if included_words == 0 else (valence_total / included_words)
+    arousal_avg = 0 if included_words == 0 else (arousal_total / included_words)
+    return valence_avg, arousal_avg
+
+
 def get_keywords_based_features(text_id):
     """
     Calculates the keywords based features for the text identified by text_id
     :param text_id: identifier of the text
-    :return: feature vector consisting of (AQ1, VQ1, #Q1, AQ2, VQ2, #Q2, AQ3, VQ3, #Q3, AQ4, VQ4, #Q4)
+    :return: feature vector consisting of (AQ1, VQ1, #Q1, AQ2, VQ2, #Q2, AQ3, VQ3, #Q3, AQ4, VQ4, #Q4, AQ1234, VQ1234)
     """
     # Pre-process the words
     words = fe.get_all_words(text_id_to_filename(text_id))
@@ -136,6 +160,7 @@ def get_keywords_based_features(text_id):
     features += get_avg_valence_arousal_for_quadrant(words, quadrant=2)
     features += get_avg_valence_arousal_for_quadrant(words, quadrant=3)
     features += get_avg_valence_arousal_for_quadrant(words, quadrant=4)
+    features += get_avg_valence_arousal_for_text(words)
     return features
 
 
@@ -185,9 +210,9 @@ def classification_using_words():
     # Evaluate each classifier using 10-fold cross validation
     for classifier_name in CLASSIFIERS.keys():
         evaluate_classifier_kfold(classifier_name, CLASSIFIERS[classifier_name], X, y, 10)
-        # train_test_classifier(classifier_name, classifiers[classifier_name], X_train, y_train, X_test, y_test)
+        # train_test_classifier(classifier_name, CLASSIFIERS[classifier_name], X_train, y_train, X_test, y_test)
 
 
 if __name__ == '__main__':
-    classification_using_words()
-    # classification_using_keywords_based_features()
+    # classification_using_words()
+    classification_using_keywords_based_features()
