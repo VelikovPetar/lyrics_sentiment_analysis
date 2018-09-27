@@ -146,11 +146,11 @@ def get_svana_words(pos_tagged_word_list):
         'JJS',  # adjective, superlative
         'NN',  # noun, singular
         'NNS',  # noun plural
-        # 'NNP',  # proper noun, singular
-        # 'NNPS',  # proper noun, plural
-        # 'RB',  # adverb
-        # 'RBR',  # adverb, comparative
-        # 'RBS',  # adverb, superlative
+        'NNP',  # proper noun, singular
+        'NNPS',  # proper noun, plural
+        'RB',  # adverb
+        'RBR',  # adverb, comparative
+        'RBS',  # adverb, superlative
     ]
     auxiliary_verbs = ['be', 'am', 'are', 'is', 'was', 'were', 'being', 'been', 'can', 'could', 'dare', 'do', 'does',
                        'did', 'have', 'has', 'had', 'having', 'may', 'might', 'must', 'need', 'ought', 'shall',

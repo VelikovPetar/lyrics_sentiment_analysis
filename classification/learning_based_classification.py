@@ -2,13 +2,13 @@ import pandas
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
-from sklearn.metrics import confusion_matrix, f1_score
 
 import common_utils
 import feature_extraction.feature_extraction as fe
@@ -59,7 +59,7 @@ def get_processed_words(text_id):
     words = fe.remove_stopwords(words)
     # Use POS tagging to exclude irrelevant words
     words = fe.pos_tag(words)
-    words = fe.get_vana_words(words)
+    words = fe.get_svana_words(words)
     # Remove unnecessary POS tags
     words = fe.remove_pos_tags(words)
     words = fe.stem_words(words, "PorterStemmer")
@@ -214,5 +214,5 @@ def classification_using_words():
 
 
 if __name__ == '__main__':
-    # classification_using_words()
-    classification_using_keywords_based_features()
+    classification_using_words()
+    # classification_using_keywords_based_features()
