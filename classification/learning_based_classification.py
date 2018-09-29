@@ -189,9 +189,11 @@ def classification_using_keywords_based_features():
     for _, row in data_frame.iterrows():
         text_id = row[0]
         label = row[1]
-        X.append(get_keywords_based_features(text_id))
-        y.append(label)
-
+        features = get_keywords_based_features(text_id)
+        if sum(features) != 0 and sum(features) / len(features) != 0:
+            X.append(features)
+            y.append(label)
+    print(len(X))
     # Scale data to range [0, 1]
     min_max_scaler = MinMaxScaler()
     X = min_max_scaler.fit_transform(X)
@@ -231,5 +233,5 @@ def classification_using_words():
 
 
 if __name__ == '__main__':
-    classification_using_words()
-    # classification_using_keywords_based_features()
+    # classification_using_words()
+    classification_using_keywords_based_features()
