@@ -5,7 +5,6 @@ import pandas
 import common_utils
 from feature_extraction.feature_extraction import get_all_words
 
-
 ANNOTATED_DATASET = {}
 ANEW_EMOTION_DICTIONARY = common_utils.get_anew_emotion_dictionary()
 
@@ -62,4 +61,3 @@ if __name__ == '__main__':
     print('Matches: %d' % matches)
     print('Total: %d' % total)
     print('Accuracy:\t%.3f%%' % (matches / total * 100))
-

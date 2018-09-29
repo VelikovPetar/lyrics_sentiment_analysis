@@ -53,7 +53,6 @@ anew_valence_range, anew_arousal_range = calculate_train_data_anew_range()
 ANEW_MIN_VALUE = min(anew_valence_range[0], anew_arousal_range[0])
 ANEW_MAX_VALUE = max(anew_valence_range[1], anew_arousal_range[1])
 
-
 if __name__ == '__main__':
     print("DAL range: (%d, %d)" % (DAL_MIN_VALUE, DAL_MAX_VALUE))
     print("ANEW range: (%d, %d)" % (ANEW_MIN_VALUE, ANEW_MAX_VALUE))

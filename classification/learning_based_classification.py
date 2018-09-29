@@ -67,6 +67,15 @@ def get_processed_words(text_id):
 
 
 def train_test_classifier(clf_name, classifier, train_x, train_y, test_x, test_y):
+    """
+    Trains a classifier on a train set and evaluates it against the test set.
+    :param clf_name: name of the classifier
+    :param classifier: the classifier
+    :param train_x: train set
+    :param train_y: train labels
+    :param test_x: test set
+    :param test_y: test labels
+    """
     classifier.fit(train_x, train_y)
     prediction = classifier.predict(test_x)
     accuracy = 0
@@ -83,6 +92,14 @@ def predict_label_probabilities(classifier, test_instance):
 
 
 def evaluate_classifier_kfold(clf_name, classifier, X, y, k):
+    """
+    Performs k-fold evaluation of the classifier
+    :param clf_name: classifier name
+    :param classifier: the classifier
+    :param X: the data set
+    :param y: the labels
+    :param k: number of folds
+    """
     scores = cross_val_score(classifier, X, y, cv=k, verbose=1)
     print(clf_name + ':', end='\t')
     print("Accuracy: %0.5f (+/- %0.3f)" % (scores.mean(), scores.std() * 2))

@@ -3,8 +3,8 @@ import string
 
 import nltk
 from nltk.corpus import stopwords
-from nltk.stem.porter import PorterStemmer
 from nltk.stem.lancaster import LancasterStemmer
+from nltk.stem.porter import PorterStemmer
 from nltk.stem.snowball import SnowballStemmer
 
 STEMMERS = {
@@ -86,7 +86,7 @@ def correct_shortened_gerund(pos_tagged_word_list):
     """
     words = []
     for word in pos_tagged_word_list:
-        if word.endswith("'"):
+        if word.endswith("in'"):
             word = word[:-1] + 'g'
         words.append(word)
     return words
@@ -146,8 +146,8 @@ def get_svana_words(pos_tagged_word_list):
         'JJS',  # adjective, superlative
         'NN',  # noun, singular
         'NNS',  # noun plural
-        'NNP',  # proper noun, singular
-        'NNPS',  # proper noun, plural
+        # 'NNP',  # proper noun, singular
+        # 'NNPS',  # proper noun, plural
         'RB',  # adverb
         'RBR',  # adverb, comparative
         'RBS',  # adverb, superlative

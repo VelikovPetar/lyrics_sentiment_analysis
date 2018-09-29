@@ -1,6 +1,6 @@
 import os
-from common_utils import get_annotated_dataset, get_full_dataset
 
+from common_utils import get_annotated_dataset, get_full_dataset
 
 if __name__ == '__main__':
     full_dataset = get_full_dataset()

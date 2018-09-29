@@ -1,9 +1,9 @@
 """
 A collection of methods that are often used in other scripts.
 """
-import os
-import pandas
 import math
+
+import pandas
 
 
 def get_anew_emotion_dictionary():
@@ -87,7 +87,7 @@ def euclidean_distance(point1, point2):
     y1 = point1[1]
     x2 = point2[0]
     y2 = point2[1]
-    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 
 if __name__ == '__main__':

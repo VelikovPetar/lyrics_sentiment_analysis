@@ -26,8 +26,8 @@ if __name__ == '__main__':
         artist = row[1]
         song = row[0]
         print('Downloading: %s - %s...' % (artist, song))
-        (succeess, json) = lyrics_api.get_lyrics(artist.replace('/', ''), song.replace('/', ''))
-        if succeess:
+        (succees, json) = lyrics_api.get_lyrics(artist.replace('/', ''), song.replace('/', ''))
+        if succees:
             lyrics = json['lyrics']
             outfile = os.path.join('data', 'raw_lyrics', artist + ' - ' + song)
             try:
