@@ -2,13 +2,14 @@ import pandas
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, accuracy_score
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
+from sklearn.base import clone
 
 import common_utils
 import feature_extraction.feature_extraction as fe
@@ -31,7 +32,7 @@ CLASSIFIERS = {
     'ExtraTrees': ExtraTreesClassifier(n_estimators=100),
     'AdaBoost': AdaBoostClassifier(),
     'MLP': MLPClassifier(max_iter=500),
-    'SVC(linear, C=0.025)': SVC(kernel="linear", C=0.025)
+    'SVC(linear, C=0.025)': SVC(kernel="linear", C=0.025, probability=True)
 }
 
 ANEW_EMOTION_DICTIONARY = common_utils.get_anew_emotion_dictionary()
@@ -232,6 +233,79 @@ def classification_using_words():
         # train_test_classifier(classifier_name, CLASSIFIERS[classifier_name], X_train, y_train, X_test, y_test)
 
 
+def make_probabilities_based_prediction(prob_w, prob_kbf):
+    max_w = 0
+    max_kbf = 0
+    for i in range(1, len(prob_w)):
+        if prob_w[i] > prob_w[max_w]:
+            max_w = i
+        if prob_kbf[i] > prob_kbf[max_kbf]:
+            max_kbf = i
+    if max_w == max_kbf:
+        return max_w + 1
+    if prob_w[max_w] > prob_kbf[max_kbf]:
+        return max_w + 1
+    else:
+        return max_kbf + 1
+
+
+def hybrid_classification():
+    # Load full data
+    data_frame = pandas.read_csv(DATASET_FILENAME, header=None)
+    X_w = []  # train set for words based classification
+    X_kbf =[]  # train set for keywords based classification
+    y = []  # labels
+
+    for _, row in data_frame.iterrows():
+        text_id = row[0]
+        label = row[1]
+        # Words based cls. data
+        words = get_processed_words(text_id)
+
+        # KBF cls. data
+        features = get_keywords_based_features(text_id)
+        if sum(features) != 0 and sum(features) / len(features) != 0:
+            # Use only those instances that can be used for KBF classification
+            X_w.append(' '.join(words))
+            X_kbf.append(features)
+            y.append(label)
+
+    Xw_train, Xw_test, yw_train, yw_test = train_test_split(X_w, y, test_size=0.2, random_state=0)
+
+    X_kbf = MinMaxScaler().fit_transform(X_kbf)
+    Xkbf_train, Xkbf_test, ykbf_train, ykbf_test = train_test_split(X_kbf, y, test_size=0.2, random_state=0)
+
+    Xw_train = VECTORIZER.fit_transform(Xw_train).toarray()
+    Xw_test = VECTORIZER.transform(Xw_test).toarray()
+    print(ykbf_test == yw_test)
+
+    for classifier_name in CLASSIFIERS.keys():
+        classifier_w = CLASSIFIERS[classifier_name]
+        classifier_kbf = clone(classifier_w)
+
+        print("training %s on W" % classifier_name)
+        classifier_w.fit(Xw_train, yw_train)
+
+        print("training %s on KBF" % classifier_name)
+        classifier_kbf.fit(Xkbf_train, ykbf_train)
+
+        probabilities_w = classifier_w.predict_proba(Xw_test)
+
+        probabilities_kbf = classifier_kbf.predict_proba(Xkbf_test)
+
+        predictions = []
+        for i in range(0, len(probabilities_w)):
+            prob_w = probabilities_w[i]
+            prob_kbf = probabilities_kbf[i]
+            # print(prob_w, end='\t')
+            # print(' vs. ', end='\t')
+            # print(prob_kbf, end='\t')
+            predictions.append(make_probabilities_based_prediction(prob_w, prob_kbf))
+
+        print("Accuracy " + str(accuracy_score(yw_test, predictions)))
+
+
 if __name__ == '__main__':
     # classification_using_words()
-    classification_using_keywords_based_features()
+    # classification_using_keywords_based_features()
+    hybrid_classification()
